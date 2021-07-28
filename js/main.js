@@ -1,13 +1,10 @@
-function handleClick(event)
+function handleSubmit(event)
 {
-  if (event.key === 'Enter' || event.target.className === "search-icon fas fa-search")
-  {
-    var movieName = document.querySelector('.title').value;
-    getMovieData(movieName.split(" ").join("+"));
-  }
+  event.preventDefault();
+  var movieName = document.querySelector('.title').value;
+  getMovieData(movieName.split(" ").join("+"));
 }
-document.querySelector('.search-icon').addEventListener('click',handleClick);
-document.querySelector('input').addEventListener('keydown',handleClick);
+document.querySelector('form').addEventListener('submit',handleSubmit);
 
 function getMovieData(name) {
   var xhr = new XMLHttpRequest();
