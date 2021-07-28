@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
+  <link rel="icon" href="images/popcorn.svg">
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+
+<body class="background-image">
   <header>
+    <div class="container">
+      <div class="row">
+        <!-- insert my watchlist image here-->
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="container">
+    <div data-view="search-view" class="search-page">
+      <div class="row justify-center align-center">
+        <img class="homepage-title" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
+          alt="netflix-font">
+      </div>
+      <div class="row">
+        <div class="column-full">
+          <div class="search-bar align-center justify-center">
+            <input class="title" placeholder="Enter movie or tv show title..." type="text">
+            <a class="search-anchor"><i class="search-icon fas fa-search"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

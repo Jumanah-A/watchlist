@@ -1,0 +1,47 @@
+.hidden {
+  display: none !important;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 575px;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-full,
+.column-half {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url("../images/homepage.jpg");
+  }
+
+  .row,
+  input {
+    width: 100%;
+    margin: 0;
+  }
+
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+    width: 100%;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+}
