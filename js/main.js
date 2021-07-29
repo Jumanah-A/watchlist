@@ -19,12 +19,95 @@ function getMovieData(name) {
 }
 
 function addMovie(movieObject) {
-  document.querySelector('.movie-title').textContent = movieObject.Title;
-  document.querySelector('.year').textContent = movieObject.Year.split('–').join(' – ');
-  document.querySelector('.genre').textContent = movieObject.Genre;
-  document.querySelector('.imdb-rating').textContent = movieObject.imdbRating;
-  document.querySelector('.plot').textContent = movieObject.Plot;
-  document.querySelector('.poster').setAttribute('src', movieObject.Poster);
+  var rowPoster = document.createElement('div');
+  rowPoster.className = 'row justify-center align-center movie-page';
+
+  var posterImg = document.createElement('img');
+  posterImg.className = 'poster';
+  posterImg.setAttribute('src', movieObject.Poster);
+  rowPoster.appendChild(posterImg);
+
+  var row = document.createElement('div');
+  row.className = 'row justify-center align-center movie-data';
+
+  var fullColumn = document.createElement('div');
+  fullColumn.className = 'column-full';
+
+  var heading = document.createElement('h4');
+  heading.textContent = 'Title:';
+
+  var paragraph = document.createElement('p');
+  paragraph.className = 'movie-title';
+  paragraph.textContent = movieObject.Title;
+
+  fullColumn.appendChild(heading);
+  fullColumn.appendChild(paragraph);
+  row.appendChild(fullColumn);
+
+  var fullColumnYear = document.createElement('div');
+  fullColumnYear.className = 'column-full';
+
+  var headingYear = document.createElement('h4');
+  headingYear.textContent = 'Year:';
+
+  var paragraphYear = document.createElement('p');
+  paragraphYear.className = 'year';
+  paragraphYear.textContent = movieObject.Year.split('–').join(' – ');
+
+  fullColumnYear.appendChild(headingYear);
+  fullColumnYear.appendChild(paragraphYear);
+  row.appendChild(fullColumnYear);
+
+  var fullColumnGenre = document.createElement('div');
+  fullColumnGenre.className = 'column-full';
+
+  var headingGenre = document.createElement('h4');
+  headingGenre.textContent = 'Genre:';
+
+  var paragraphGenre = document.createElement('p');
+  paragraphGenre.className = 'genre';
+  paragraphGenre.textContent = movieObject.Genre;
+
+  fullColumnGenre.appendChild(headingGenre);
+  fullColumnGenre.appendChild(paragraphGenre);
+  row.appendChild(fullColumnGenre);
+
+  var fullColumnImdb = document.createElement('div');
+  fullColumnImdb.className = 'column-full';
+
+  var headingImdb = document.createElement('h4');
+  headingImdb.textContent = 'IMDb Rating:';
+
+  var paragraphImdb = document.createElement('p');
+  paragraphImdb.className = 'imdb-rating';
+  paragraphImdb.textContent = movieObject.imdbRating;
+
+  fullColumnImdb.appendChild(headingImdb);
+  fullColumnImdb.appendChild(paragraphImdb);
+  row.appendChild(fullColumnImdb);
+
+  // hi
+  var fullColumnPlot = document.createElement('div');
+  fullColumnPlot.className = 'column-full';
+
+  var headingPlot = document.createElement('h4');
+  headingPlot.textContent = 'Plot:';
+
+  var paragraphPlot = document.createElement('p');
+  paragraphPlot.className = 'plot';
+  paragraphPlot.textContent = movieObject.Plot;
+
+  fullColumnPlot.appendChild(headingPlot);
+  fullColumnPlot.appendChild(paragraphPlot);
+  row.appendChild(fullColumnPlot);
+
+  var info = document.createElement('div');
+  info.className = 'movie-info justify-center align-center one-padding';
+  info.appendChild(row);
+
+  var movieViewId = document.getElementById('movie-display');
+  movieViewId.appendChild(rowPoster);
+  movieViewId.appendChild(info);
 }
 
 function switchViews(view) {
