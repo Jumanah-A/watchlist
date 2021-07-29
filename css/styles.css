@@ -1,10 +1,4 @@
-/* img {
-  width: 90%;
-  height: 90%;
-} */
-
 body {
-  height: 100vh;
   width: 100%;
 }
 
@@ -39,9 +33,6 @@ h4 {
 
 .container {
   width: 100%;
-  height: 100%;
-
-  /* bottom: 0; */
 }
 
 .background-image {
@@ -86,14 +77,11 @@ h4 {
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  /* height: 100vh; */
   margin-bottom: 1rem;
 }
 
 .movie-page {
   margin: 0 1rem 2rem;
-  height: 100vh;
 }
 
 .background-color {
@@ -110,7 +98,6 @@ h4 {
 }
 
 .movie-info {
-  /* margin: 0 2rem; */
   display: flex;
 }
 
@@ -122,18 +109,6 @@ h4 {
   width: 75%;
 }
 
-.watchlist-heading img {
-  width: 80%;
-  height: 80%;
-}
-
-.watchlist-heading {
-  height: auto;
-}
-
-.poster {
-  max-width: 300px;
-  max-height: 444px;
-
-  /* width: 10%; */
+.height-100 {
+  height: 100vh;
 }
