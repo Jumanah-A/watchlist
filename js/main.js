@@ -20,7 +20,7 @@ function getMovieData(name) {
 
 function addMovie(movieObject) {
   document.querySelector('.movie-title').textContent = movieObject.Title;
-  document.querySelector('.year').textContent = movieObject.Year;
+  document.querySelector('.year').textContent = movieObject.Year.split('–').join(' – ');
   document.querySelector('.genre').textContent = movieObject.Genre;
   document.querySelector('.imdb-rating').textContent = movieObject.imdbRating;
   document.querySelector('.plot').textContent = movieObject.Plot;
