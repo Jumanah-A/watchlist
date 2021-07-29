@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="background-color">
+<body class="background-image">
   <header>
-    <div class="header">
+    <div class="header hidden">
       <div class="row flex-end one-padding">
           <img class="watchlist-heading" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
             alt="netflix-font">
@@ -24,51 +24,50 @@
     </div>
   </header>
   <main class="container">
-    <div data-view="search-view" class="search-page height-100 hidden">
-      <div class="row justify-center align-center">
-        <img class="homepage-title" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
-          alt="netflix-font">
-      </div>
-      <div class="row">
-        <div class="column-full">
-          <form>
-            <div class="search-bar align-center justify-center">
-              <input type="text" name ="movie-title" class="title" placeholder="Enter movie or tv show title...">
-              <button class="search-button" type="submit"><i class="search-icon fas fa-search fa-lg"></i></button>
-            </div>
-          </form>
+    <div data-view="search-view" class=" view">
+      <div class="search-page height-100">
+        <div class="row">
+          <img class="homepage-title" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
+            alt="netflix-font">
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <form>
+              <div class="search-bar align-center justify-center">
+                <input type="text" name ="title" class="title" placeholder="Enter movie or tv show title...">
+                <button class="search-button" type="submit"><i class="search-icon fas fa-search fa-lg"></i></button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+
     </div>
-    <div data-view="movie-view" class="movie-page">
-      <div class="row justify-center align-center">
-        <!-- <div class="poster"> -->
-          <img class="poster" src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg">
-        <!-- </div> -->
+    <div data-view="movie-view" class="view hidden">
+      <div class="row justify-center align-center movie-page">
+          <img class="poster">
       </div>
       <div class="movie-info justify-center align-center one-padding">
         <div class="row justify-center align-center">
           <div class="column-full">
             <h4>Title:</h4>
-            <p class="title">The Avengers</p>
+            <p class="movie-title"></p>
           </div>
           <div class="column-full">
             <h4>Year:</h4>
-            <p class="year">2012</p>
+            <p class="year"></p>
           </div>
           <div class="column-full">
             <h4>Genre:</h4>
-            <p class="genre">Action,Adventure,Sci-Fi</p>
+            <p class="genre"></p>
           </div>
           <div class="column-full">
             <h4>IMDb Rating:</h4>
-            <p class="imdb-rating">8.0</p>
+            <p class="imdb-rating"></p>
           </div>
           <div class="column-full">
           <h4>Plot:</h4>
-            <p class="plot">Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the
-              mischievous Loki
-              and his alien army from enslaving humanity.</p>
+            <p class="plot"></p>
           </div>
         </div>
       </div>
