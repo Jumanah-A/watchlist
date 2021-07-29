@@ -12,7 +12,7 @@ function getMovieData(name) {
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    addMovie(xhr.response);
+    document.getElementById('movie-display').appendChild(addMovie(xhr.response));
   });
   xhr.send();
   return movieData;
@@ -104,10 +104,10 @@ function addMovie(movieObject) {
   var info = document.createElement('div');
   info.className = 'movie-info justify-center align-center one-padding';
   info.appendChild(row);
-
-  var movieViewId = document.getElementById('movie-display');
-  movieViewId.appendChild(rowPoster);
-  movieViewId.appendChild(info);
+  var block = document.createElement('div');
+  block.appendChild(rowPoster);
+  block.appendChild(info);
+  return block;
 }
 
 function switchViews(view) {
