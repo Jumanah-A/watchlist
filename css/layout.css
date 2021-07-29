@@ -1,12 +1,18 @@
+input {
+  width: 100%;
+  margin: 0;
+}
+
 .hidden {
   display: none !important;
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 575px;
+  margin: 0;
   position: relative;
   padding: 0 1.5rem;
+  width: 100vw;
+  height: 100vh;
 }
 
 .row {
@@ -21,27 +27,29 @@
 
 @media screen and (max-width: 768px) {
   body {
-    background-attachment: fixed;
+    /* background-attachment: fixed;
     background-position: center center;
-    background-size: cover;
+    background-size: cover; */
     width: 100%;
-    background-repeat: no-repeat;
-    background-image: url("../images/homepage.jpg");
+
+    /* background-repeat: no-repeat;
+    background-image: url("../images/homepage.jpg"); */
   }
 
-  .row,
-  input {
-    width: 100%;
-    margin: 0;
-  }
-
-  .column-full,
-  .column-half {
+  .column-full {
     padding: 0 0.75rem;
     width: 100%;
   }
 
   .column-half {
+    width: 50%;
+  }
+
+  .watchlist-heading {
+    width: 40%;
+  }
+
+  .poster {
     width: 50%;
   }
 }

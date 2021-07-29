@@ -1,6 +1,7 @@
-img {
-  border-radius: 1rem;
-}
+/* img {
+  width: 90%;
+  height: 90%;
+} */
 
 body {
   height: 100vh;
@@ -17,6 +18,10 @@ input {
   color: #b1a7a6;
 }
 
+button {
+  border: none;
+}
+
 input:focus {
   outline: none;
 }
@@ -25,9 +30,18 @@ button:hover {
   cursor: pointer;
 }
 
+p,
+h4 {
+  color: #b1a7a6;
+  padding: 0.5rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .container {
   width: 100%;
   height: 100%;
+
+  /* bottom: 0; */
 }
 
 .background-image {
@@ -55,7 +69,7 @@ button:hover {
   position: absolute;
   color: #b1a7a6;
   right: 1rem;
-  top: 1rem;
+  top: 1.25rem;
 }
 
 .align-center {
@@ -72,5 +86,54 @@ button:hover {
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  /* height: 100vh; */
+  margin-bottom: 1rem;
+}
+
+.movie-page {
+  margin: 0 1rem 2rem;
   height: 100vh;
+}
+
+.background-color {
+  background-color: #161a1d;
+}
+
+.flex-end {
+  justify-content: flex-start;
+  justify-items: flex-start;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.movie-info {
+  /* margin: 0 2rem; */
+  display: flex;
+}
+
+.one-padding {
+  padding: 1rem;
+}
+
+.column-three-four {
+  width: 75%;
+}
+
+.watchlist-heading img {
+  width: 80%;
+  height: 80%;
+}
+
+.watchlist-heading {
+  height: auto;
+}
+
+.poster {
+  max-width: 300px;
+  max-height: 444px;
+
+  /* width: 10%; */
 }
