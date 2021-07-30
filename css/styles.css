@@ -14,6 +14,7 @@ input {
 
 button {
   border: none;
+  background-color: #161a1d;
 }
 
 input:focus {
@@ -63,6 +64,16 @@ h4 {
   top: 1.25rem;
 }
 
+.search-icon-header {
+  color: #db202c;
+  right: 1rem;
+  top: 1.25rem;
+}
+
+.search-button {
+  background-color: #161a1d;
+}
+
 .align-center {
   align-content: center;
   align-items: center;
@@ -71,6 +82,10 @@ h4 {
 .justify-center {
   display: flex;
   justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .search-page {
@@ -130,8 +145,8 @@ h4 {
 }
 
 .watchlist-heading {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
 }
 
 .mywatchlist {
@@ -139,3 +154,7 @@ h4 {
   height: 30%;
   margin: 1rem;
 }
+
+/* .block {
+  display: flex;
+} */

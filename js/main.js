@@ -1,8 +1,10 @@
+var currentItem = {};
 function handleSubmit(event) {
   event.preventDefault();
   var movieName = document.querySelector('.title').value;
   getMovieData(movieName.split(' ').join('+'));
   switchViews('movie-view');
+  document.querySelector('form').reset();
 }
 document.querySelector('form').addEventListener('submit', handleSubmit);
 
@@ -11,18 +13,41 @@ function getMovieData(name) {
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    document.getElementById('movie-display').appendChild(addMovie(xhr.response));
+    currentItem['Title'] = xhr.response.Title;
+    currentItem['Year'] = xhr.response.Year;
+    currentItem['Genre'] = xhr.response.Genre;
+    currentItem['imdbRating'] = xhr.response.imdbRating;
+    currentItem['Plot'] = xhr.response.Plot;
+    currentItem['Poster'] = xhr.response.Poster;
+    document.getElementById('movie-display').appendChild(addMovie(currentItem));
     document.querySelector('.add-watchlist').addEventListener('click', handleClick);
   });
   xhr.send();
 }
 function handleClick(event) {
-  // if (event.target.className === "add-watchlist red-button")
-  // {
-  //   // console.log("add to wtachlist button is clicked ");
-  // }
+  if (event.target.className === "add-watchlist red-button")
+  {
+    console.log(currentItem);
+    console.log("add to wtachlist button is clicked ");
+    if (!watchData.watchListArray.includes(currentItem))
+    {
+      watchData.watchListArray.push(currentItem);
+    }
+  } else if (event.target.className === "search-icon-header fas fa-search fa-3x")
+  {
+    switchViews('search-view');
+    document.getElementById('movie-display').innerHTML = "";
+  } else if (event.target.className === "mywatchlist")
+  {
+    console.log("must swicth views");
+    switchViews('mywatchlist-view');
+  }
+  console.log("button is clicked ");
+  console.log(event.target.className);
+
 }
 document.querySelector('button').addEventListener('click', handleClick);
+document.querySelector('header').addEventListener('click', handleClick);
 
 function addMovie(movieObject) {
   var rowPoster = document.createElement('div');
@@ -92,7 +117,6 @@ function addMovie(movieObject) {
   fullColumnImdb.appendChild(paragraphImdb);
   row.appendChild(fullColumnImdb);
 
-  // hi
   var fullColumnPlot = document.createElement('div');
   fullColumnPlot.className = 'column-full';
 
@@ -125,6 +149,7 @@ function addMovie(movieObject) {
   addWatchlistColumn.appendChild(addWatchlistButton);
   addWatchlistRow.appendChild(addWatchlistColumn);
   var block = document.createElement('div');
+  block.className = "block";
   block.appendChild(rowPoster);
   block.appendChild(info);
   block.appendChild(addWatchlistRow);
@@ -133,18 +158,18 @@ function addMovie(movieObject) {
 
 function switchViews(view) {
   var $viewList = document.querySelectorAll('.view');
+  for (var i = 0; i < $viewList.length; i++) {
+    if (view !== $viewList[i].getAttribute('data-view')) {
+      $viewList[i].className = 'view hidden';
+    } else {
+      $viewList[i].className = 'view';
+    }
+  }
   if (view === 'search-view') {
     document.querySelector('.header').className = 'header hidden';
     document.querySelector('body').className = 'background-image';
   } else {
     document.querySelector('body').className = 'background-color';
     document.querySelector('.header').className = 'header';
-    for (var i = 0; i < $viewList.length; i++) {
-      if (view !== $viewList[i].getAttribute('data-view')) {
-        $viewList[i].className = 'view hidden';
-      } else {
-        $viewList[i].className = 'view';
-      }
-    }
   }
 }
