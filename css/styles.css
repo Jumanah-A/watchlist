@@ -1,6 +1,6 @@
-body {
+/* body {
   width: 100%;
-}
+} */
 
 input {
   background-color: #161a1d;
@@ -32,8 +32,17 @@ h4 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.container {
-  width: 100%;
+.column-four {
+  width: 25%;
+}
+
+.poster {
+  margin: 1rem;
+  max-width: 100%;
+  max-height: 100%;
+
+  /* margin: auto; */
+  display: block;
 }
 
 .background-image {
@@ -93,13 +102,17 @@ h4 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
+
+  /* width: 100%; */
   margin-bottom: 1rem;
 }
 
-.movie-page {
-  margin: 0 1rem 2rem;
-}
+/* .movie-page {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+} */
 
 .background-color {
   background-color: #161a1d;
@@ -110,22 +123,18 @@ h4 {
   display: block;
 }
 
-/* .flex-start {
-  justify-content: flex-start;
-  justify-items: flex-start;
-} */
-
 .flex-column {
   flex-direction: column;
+  justify-content: center;
 }
 
-.movie-info {
+/* .movie-info {
   display: flex;
-}
+} */
 
-.one-padding {
+/* .movie .one-padding {
   padding: 1rem;
-}
+} */
 
 .column-three-four {
   width: 75%;
@@ -142,6 +151,7 @@ h4 {
   color: white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
+  margin: 2rem 2rem;
 }
 
 .watchlist-heading {
@@ -155,6 +165,10 @@ h4 {
   margin: 1rem;
 }
 
-/* .block {
-  display: flex;
-} */
+.center {
+  margin: 0 auto;
+}
+
+.bottom-padding {
+  padding-bottom: 1rem;
+}

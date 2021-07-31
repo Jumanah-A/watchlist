@@ -59,10 +59,10 @@ function addMovie(movieObject) {
   rowPoster.appendChild(posterImg);
 
   var row = document.createElement('div');
-  row.className = 'row justify-center align-center movie-data';
+  row.className = 'row align-center flex-column movie-data';
 
   var fullColumn = document.createElement('div');
-  fullColumn.className = 'column-full';
+  fullColumn.className = 'column-three-four';
 
   var heading = document.createElement('h4');
   heading.textContent = 'Title:';
@@ -76,7 +76,7 @@ function addMovie(movieObject) {
   row.appendChild(fullColumn);
 
   var fullColumnYear = document.createElement('div');
-  fullColumnYear.className = 'column-full';
+  fullColumnYear.className = 'column-three-four';
 
   var headingYear = document.createElement('h4');
   headingYear.textContent = 'Year:';
@@ -90,7 +90,7 @@ function addMovie(movieObject) {
   row.appendChild(fullColumnYear);
 
   var fullColumnGenre = document.createElement('div');
-  fullColumnGenre.className = 'column-full';
+  fullColumnGenre.className = 'column-three-four';
 
   var headingGenre = document.createElement('h4');
   headingGenre.textContent = 'Genre:';
@@ -104,7 +104,7 @@ function addMovie(movieObject) {
   row.appendChild(fullColumnGenre);
 
   var fullColumnImdb = document.createElement('div');
-  fullColumnImdb.className = 'column-full';
+  fullColumnImdb.className = 'column-three-four';
 
   var headingImdb = document.createElement('h4');
   headingImdb.textContent = 'IMDb Rating:';
@@ -118,7 +118,7 @@ function addMovie(movieObject) {
   row.appendChild(fullColumnImdb);
 
   var fullColumnPlot = document.createElement('div');
-  fullColumnPlot.className = 'column-full';
+  fullColumnPlot.className = 'column-three-four';
 
   var headingPlot = document.createElement('h4');
   headingPlot.textContent = 'Plot:';
@@ -132,13 +132,13 @@ function addMovie(movieObject) {
   row.appendChild(fullColumnPlot);
 
   var info = document.createElement('div');
-  info.className = 'movie-info justify-center align-center one-padding';
+  info.className = 'movie-info one-padding justify-center';
   info.appendChild(row);
 
   var addWatchlistRow = document.createElement('div');
-  addWatchlistRow.className = 'row one-padding';
+  addWatchlistRow.className = 'row one-padding justify-center';
   var addWatchlistColumn = document.createElement('div');
-  addWatchlistColumn.className = 'column-half';
+  // addWatchlistColumn.className = 'column-half';
   var addWatchlistButton = document.createElement('button');
   addWatchlistButton.className = 'add-watchlist red-button';
   addWatchlistButton.setAttribute('type', 'button');
@@ -153,6 +153,7 @@ function addMovie(movieObject) {
   block.appendChild(rowPoster);
   block.appendChild(info);
   block.appendChild(addWatchlistRow);
+  console.log(block);
   return block;
 }
 
