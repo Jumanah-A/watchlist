@@ -40,6 +40,11 @@ function handleClick(event) {
   } else if (event.target.className === "mywatchlist")
   {
     console.log("must swicth views");
+    for(var i =0;i<watchData.watchListArray.length;i++)
+    {
+      document.getElementById('mywatchlist').appendChild(addMovieWatchlist(watchData.watchListArray[i]));
+    }
+    // document.getElementById('mywatchlist').appendChild(addMovieWatchlist(watchData.watchListArray[i]));
     switchViews('mywatchlist-view');
   }
   console.log("button is clicked ");
@@ -156,6 +161,117 @@ function addMovie(movieObject) {
   console.log(block);
   return block;
 }
+
+function addMovieWatchlist(movieObject) {
+  var rowPoster = document.createElement('div');
+  rowPoster.className = 'justify-center align-center';
+
+  var posterImg = document.createElement('img');
+  posterImg.className = 'poster';
+  posterImg.setAttribute('src', movieObject.Poster);
+  rowPoster.appendChild(posterImg);
+
+  var columnFour = document.createElement('div');
+  columnFour.className = 'column-four';
+  columnFour.appendChild(rowPoster);
+
+  // movie data row
+
+  var row = document.createElement('div');
+  row.className = 'row flex-column movie-data one-padding';
+
+  var fullColumn = document.createElement('div');
+  fullColumn.className = 'column-full';
+
+  var heading = document.createElement('h4');
+  heading.textContent = 'Title:';
+
+  var paragraph = document.createElement('p');
+  paragraph.className = 'movie-title';
+  paragraph.textContent = movieObject.Title;
+
+  fullColumn.appendChild(heading);
+  fullColumn.appendChild(paragraph);
+  row.appendChild(fullColumn);
+
+  var fullColumnYear = document.createElement('div');
+  fullColumnYear.className = 'column-full';
+
+  var headingYear = document.createElement('h4');
+  headingYear.textContent = 'Year:';
+
+  var paragraphYear = document.createElement('p');
+  paragraphYear.className = 'year';
+  paragraphYear.textContent = movieObject.Year.split('–').join(' – ');
+
+  fullColumnYear.appendChild(headingYear);
+  fullColumnYear.appendChild(paragraphYear);
+  row.appendChild(fullColumnYear);
+
+  var fullColumnGenre = document.createElement('div');
+  fullColumnGenre.className = 'column-full';
+
+  var headingGenre = document.createElement('h4');
+  headingGenre.textContent = 'Genre:';
+
+  var paragraphGenre = document.createElement('p');
+  paragraphGenre.className = 'genre';
+  paragraphGenre.textContent = movieObject.Genre;
+
+  fullColumnGenre.appendChild(headingGenre);
+  fullColumnGenre.appendChild(paragraphGenre);
+  row.appendChild(fullColumnGenre);
+
+  var fullColumnImdb = document.createElement('div');
+  fullColumnImdb.className = 'column-full';
+
+  var headingImdb = document.createElement('h4');
+  headingImdb.textContent = 'IMDb Rating:';
+
+  var paragraphImdb = document.createElement('p');
+  paragraphImdb.className = 'imdb-rating';
+  paragraphImdb.textContent = movieObject.imdbRating;
+
+  fullColumnImdb.appendChild(headingImdb);
+  fullColumnImdb.appendChild(paragraphImdb);
+  row.appendChild(fullColumnImdb);
+
+  var fullColumnPlot = document.createElement('div');
+  fullColumnPlot.className = 'column-three-four';
+
+  var headingPlot = document.createElement('h4');
+  headingPlot.textContent = 'Plot:';
+
+  var paragraphPlot = document.createElement('p');
+  paragraphPlot.className = 'plot';
+  paragraphPlot.textContent = movieObject.Plot;
+
+  fullColumnPlot.appendChild(headingPlot);
+  fullColumnPlot.appendChild(paragraphPlot);
+  row.appendChild(fullColumnPlot);
+
+  var info = document.createElement('div');
+  info.className = 'column-three-four top-margin';
+  info.appendChild(row);
+  var block = document.createElement('div');
+  block.className = "block";
+
+  var rowImgBottom = document.createElement('div');
+  rowImgBottom.className = "row bottom-padding";
+  rowImgBottom.appendChild(rowPoster);
+  block.appendChild(rowImgBottom);
+  block.appendChild(info);
+  console.log(block);
+  console.log(block);
+  return block;
+}
+
+
+
+
+
+
+
 
 function switchViews(view) {
   var $viewList = document.querySelectorAll('.view');

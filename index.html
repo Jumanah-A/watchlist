@@ -18,8 +18,7 @@
   <header>
     <div class="header hidden">
       <div class="row one-padding space-between">
-        <img class="watchlist-heading" src="images/watchlist.png"
-            alt="netflix-font">
+        <img class="watchlist-heading" src="images/watchlist.png" alt="netflix-font">
         <button class="mywatchlist-button">
           <img class="mywatchlist" src="images/mywatchlist.png">
         </button>
@@ -38,7 +37,7 @@
           <div class="column-full">
             <form>
               <div class="search-bar align-center justify-center">
-                <input type="text" name ="title" class="title" placeholder="Enter movie or tv show title...">
+                <input type="text" name="title" class="title" placeholder="Enter movie or tv show title...">
                 <button class="search-button" type="submit"><i class="search-icon fas fa-search fa-lg"></i></button>
               </div>
             </form>
@@ -51,7 +50,7 @@
 
     </div>
     <div data-view="mywatchlist-view" class="view hidden">
-      <ul>
+      <ul class="mywatchlist-list" id="mywatchlist">
         <div class="row bottom-padding">
           <div class="column-four">
             <div class="justify-center align-center"><img class="poster"
@@ -78,45 +77,80 @@
               </div>
               <div class="column-three-four">
                 <h4>Plot:</h4>
-                <p class="plot">A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself
+                <p class="plot">A dangerously charming, intensely obsessive young man goes to extreme measures to insert
+                  himself
                   into the lives of those he is transfixed by.</p>
               </div>
             </div>
           </div>
         </div>
-            <div class="row bottom-padding">
-              <div class="column-four">
-                <div class="justify-center align-center"><img class="poster"
-                    src="https://m.media-amazon.com/images/M/MV5BZDJjOTg4OWYtYWIyOS00MjQ3LTg5ZDktYzU2N2RkNmYzNjZlXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg">
-                </div>
-              </div>
-
-
-              <div class="column-half">
+        <!-- <div class="row bottom-padding">
+          <div class="column-four">
+            <div class="justify-center align-center"><img class="poster"
+                src="https://m.media-amazon.com/images/M/MV5BZDJjOTg4OWYtYWIyOS00MjQ3LTg5ZDktYzU2N2RkNmYzNjZlXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg">
+            </div>
+          </div>
+          <div class="column-three-four top-margin">
+            <div class="row flex-column movie-data one-padding">
+              <div class="column-full">
                 <h4>Title:</h4>
                 <p class="movie-title">You</p>
               </div>
-              <div class="column-half">
+              <div class="column-full">
                 <h4>Year:</h4>
                 <p class="year">2018 – </p>
               </div>
-              <div class="column-half">
+              <div class="column-full">
                 <h4>Genre:</h4>
                 <p class="genre">Crime, Drama, Romance</p>
               </div>
-              <div class="column-half">
+              <div class="column-full">
                 <h4>IMDb Rating:</h4>
                 <p class="imdb-rating">7.7</p>
               </div>
               <div class="column-three-four">
                 <h4>Plot:</h4>
-                <p class="plot">A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself
+                <p class="plot">A dangerously charming, intensely obsessive young man goes to extreme measures to insert
+                  himself
                   into the lives of those he is transfixed by.</p>
               </div>
             </div>
+          </div>
+        </div> -->
+        <!-- <div class="row bottom-padding">
+          <div class="column-four">
+            <div class="justify-center align-center"><img class="poster"
+                src="https://m.media-amazon.com/images/M/MV5BZDJjOTg4OWYtYWIyOS00MjQ3LTg5ZDktYzU2N2RkNmYzNjZlXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg">
+            </div>
+          </div>
 
 
-        <!-- <div class="row">
+          <div class="column-half">
+            <h4>Title:</h4>
+            <p class="movie-title">You</p>
+          </div>
+          <div class="column-half">
+            <h4>Year:</h4>
+            <p class="year">2018 – </p>
+          </div>
+          <div class="column-half">
+            <h4>Genre:</h4>
+            <p class="genre">Crime, Drama, Romance</p>
+          </div>
+          <div class="column-half">
+            <h4>IMDb Rating:</h4>
+            <p class="imdb-rating">7.7</p>
+          </div>
+          <div class="column-three-four">
+            <h4>Plot:</h4>
+            <p class="plot">A dangerously charming, intensely obsessive young man goes to extreme measures to insert
+              himself
+              into the lives of those he is transfixed by.</p>
+          </div>
+        </div>
+
+
+        <div class="row">
           <div class="column-half">
             <div class="row justify-center align-center movie-page"><img class="poster"
                 src="https://m.media-amazon.com/images/M/MV5BZDJjOTg4OWYtYWIyOS00MjQ3LTg5ZDktYzU2N2RkNmYzNjZlXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SX300.jpg">
