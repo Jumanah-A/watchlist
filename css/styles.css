@@ -128,13 +128,11 @@ h4 {
   justify-content: center;
 }
 
-/* .movie-info {
-  display: flex;
-} */
-
-/* .movie .one-padding {
-  padding: 1rem;
-} */
+.no-items {
+  color: #b1a7a6;
+  padding: 3rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
 .column-three-four {
   width: 75%;
