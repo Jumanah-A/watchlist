@@ -1,87 +1,75 @@
-/* global data */
-/* exported data */
-var currentItem = {};
-if (watchData.watchListArray.length === 0)
-{
-  document.querySelector('.no-items').className = "row no-items justify-center";
-}else
-{
-  document.querySelector('.no-items').className = "row no-items justify-center hidden";
-}
+/* exported watchData */
+/* global watchData */
 function handleSubmit(event) {
   event.preventDefault();
   var movieName = document.querySelector('.title').value;
   getMovieData(movieName.split(' ').join('+'));
-  console.log(currentItem)
+
   // document.getElementById('movie-display').appendChild(movieInfo('movie'));
   document.getElementById('movie-display').removeChild(document.getElementById('movie-display').firstChild);
   switchViews('movie-view');
   document.querySelector('form').reset();
 }
-function getMovieData(name)
-{
+function getMovieData(name) {
+  var currentItem = {};
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t='+name);
+  xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
-  xhr.addEventListener('load',function()
-  {
-    currentItem['Title'] = xhr.response.Title;
-    currentItem['Year'] = xhr.response.Year;
-    currentItem['Genre'] = xhr.response.Genre;
-    currentItem['imdbRating'] = xhr.response.imdbRating;
-    currentItem['Plot'] = xhr.response.Plot;
-    currentItem['Poster'] = xhr.response.Poster;
-    document.getElementById('movie-display').appendChild(movieInfo('movie'));
-    document.querySelector('.add-watchlist').addEventListener('click', handleClick);
+  xhr.addEventListener('load', function () {
+    currentItem.Title = xhr.response.Title;
+    currentItem.Year = xhr.response.Year;
+    currentItem.Genre = xhr.response.Genre;
+    currentItem.imdbRating = xhr.response.imdbRating;
+    currentItem.Plot = xhr.response.Plot;
+    currentItem.Poster = xhr.response.Poster;
+    document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
+    document.querySelector('.add-watchlist').addEventListener('click', function () { handleClick(event, currentItem); });
   });
   xhr.send();
 }
 
-function movieInfo(view)
-{
-  //img element for the poster
+function movieInfo(view, currentItem) {
+  // img element for the poster
   var posterImg = document.createElement('img');
   posterImg.className = 'poster';
   posterImg.setAttribute('src', currentItem.Poster);
 
-  //title
+  // title
   var headingTitle = document.createElement('h4');
   headingTitle.textContent = 'Title:';
   var paragraphTitle = document.createElement('p');
   paragraphTitle.className = 'movie-title';
   paragraphTitle.textContent = currentItem.Title;
 
-  //year
+  // year
   var headingYear = document.createElement('h4');
   headingYear.textContent = 'Year:';
   var paragraphYear = document.createElement('p');
   paragraphYear.className = 'year';
-  console.log(currentItem.Year);
   paragraphYear.textContent = currentItem.Year.split('–').join(' – ');
 
-  //genre
+  // genre
   var headingGenre = document.createElement('h4');
   headingGenre.textContent = 'Genre:';
   var paragraphGenre = document.createElement('p');
   paragraphGenre.className = 'genre';
   paragraphGenre.textContent = currentItem.Genre;
 
-  //imdbRating
+  // imdbRating
   var headingImdb = document.createElement('h4');
   headingImdb.textContent = 'IMDb Rating:';
   var paragraphImdb = document.createElement('p');
   paragraphImdb.className = 'imdb-rating';
   paragraphImdb.textContent = currentItem.imdbRating;
 
-  //plot
+  // plot
   var headingPlot = document.createElement('h4');
   headingPlot.textContent = 'Plot:';
   var paragraphPlot = document.createElement('p');
   paragraphPlot.className = 'plot';
   paragraphPlot.textContent = currentItem.Plot;
 
-  if(view === 'movie')
-  {
+  if (view === 'movie') {
     var rowPoster = document.createElement('div');
     rowPoster.className = 'row justify-center align-center movie-page';
     rowPoster.appendChild(posterImg);
@@ -143,15 +131,14 @@ function movieInfo(view)
     addWatchlistRow.appendChild(addWatchlistColumn);
 
     var block = document.createElement('div');
-    block.className = "entry";
+    block.className = 'entry';
     block.appendChild(rowPoster);
     block.appendChild(info);
     block.appendChild(addWatchlistRow);
-    console.log(block);
+    // console.log(block);
     return block;
 
-  }else if(view === 'watchlist')
-  {
+  } else if (view === 'watchlist') {
     var rowPosterWatchlist = document.createElement('div');
     rowPosterWatchlist.className = 'justify-center align-center';
     rowPosterWatchlist.appendChild(posterImg);
@@ -202,53 +189,56 @@ function movieInfo(view)
     infoWatch.className = 'column-three-four top-margin';
     infoWatch.appendChild(rowWatch);
     var watchlistentry = document.createElement('div');
-    watchlistentry.className = "watchlistentry";
+    watchlistentry.className = 'watchlistentry';
 
     var rowBottom = document.createElement('div');
-    rowBottom.className = "row bottom-padding";
+    rowBottom.className = 'row bottom-padding';
     rowBottom.appendChild(columnFour);
     rowBottom.appendChild(infoWatch);
     watchlistentry.appendChild(rowBottom);
-    // block.appendChild(info);
-    console.log(watchlistentry);
+    // console.log(watchlistentry);
     return watchlistentry;
   }
 
 }
 
-function handleClick(event)
-{
-  console.log(event.target.className);
-  if (event.target.className === 'mywatchlist-img')
-  {
-    console.log('MywatchList button is pressed');
+function handleClick(event, entry) {
+  if (event.target.className === 'mywatchlist-img') {
+    showWatchlist();
+    if (watchData.watchListArray.length === 0) {
+      document.querySelector('.no-items').className = 'row no-items justify-center';
+    } else {
+      document.querySelector('.no-items').className = 'row no-items justify-center hidden';
+    }
     switchViews('mywatchlist-view');
-  }else if (event.target.className === 'search-icon-header fas fa-search fa-3x')
-  {
-    console.log('Search icon in the header button is pressed');
+  } else if (event.target.className === 'search-icon-header fas fa-search fa-3x') {
     switchViews('search-view');
-  }
-  else if (event.target.className === 'add-watchlist red-button')
-  {
-    addToWatchlist(currentItem);
+  } else if (event.target.className === 'add-watchlist red-button') {
+    addToWatchlist(entry);
   }
 }
 
-function addToWatchlist(entry)
-{
-  console.log('Movie is added to mywatchlist array', watchData.watchListArray);
-  if (watchData.watchListArray.includes(currentItem) === false) {
-    watchData.watchListArray.push(currentItem);
-  }
-}
-
-function handleEntry(event) {
-
+function showWatchlist() {
+  document.getElementById('mywatchlist-list').innerHTML = '';
   for (var i = 0; i < watchData.watchListArray.length; i++) {
-    document.getElementById('mywatchlist-list').appendChild(movieInfo('mywatchlist'));
+    document.getElementById('mywatchlist-list').appendChild(movieInfo('watchlist', watchData.watchListArray[i]));
   }
 }
-window.addEventListener('DOMContentLoaded', handleEntry);
+
+function addToWatchlist(entry) {
+  if (watchData.watchListArray.length === 0) {
+    watchData.watchListArray.push(entry);
+  } else {
+    var len = watchData.watchListArray.length;
+    for (var i = 0; i < len; i++) {
+      if (String(watchData.watchListArray[i].Title) === String(entry.Title)) {
+
+        return;
+      }
+    }
+    watchData.watchListArray.push(entry);
+  }
+}
 
 function switchViews(view) {
   var $viewList = document.querySelectorAll('.view');
@@ -264,11 +254,11 @@ function switchViews(view) {
     document.querySelector('body').className = 'background-image';
   } else {
     document.querySelector('body').className = 'background-color';
-    document.querySelector('.header').className = 'header';
+    document.querySelector('.header').className = 'header one-padding';
   }
 }
 
-//Listen for the serach icon and the mywatchlist button in the header
+// Listen for the serach icon and the mywatchlist button in the header
 document.querySelector('form').addEventListener('submit', handleSubmit);
 document.querySelector('.mywatchlist-button').addEventListener('click', handleClick);
 document.querySelector('.search-button').addEventListener('click', handleClick);
