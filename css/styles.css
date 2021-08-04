@@ -32,12 +32,33 @@ h4 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+@font-face {
+  font-family: 'bebas_neueregular';
+  src:
+    url('../netflixFont/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../netflixFont/bebasneue-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .one-padding {
   padding: 1rem;
 }
 
 .column-four {
   width: 25%;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+/* .test {
+  padding: 0 3rem;
+} */
+
+.padding-075 {
+  padding: 0 0.75rem;
 }
 
 .poster {
@@ -99,6 +120,10 @@ h4 {
   justify-content: space-between;
 }
 
+.flex {
+  display: flex;
+}
+
 .search-page {
   justify-content: center;
   align-items: center;
@@ -129,7 +154,6 @@ h4 {
 
 .column-three-four {
   width: 75%;
-  padding: 0 0.75rem;
 }
 
 .height-100 {
@@ -152,9 +176,9 @@ h4 {
 }
 
 .mywatchlist {
-  width: 30%;
+  /* width: 30%;
   height: 30%;
-  margin: 1rem;
+  margin: 1rem; */
 }
 
 .center {

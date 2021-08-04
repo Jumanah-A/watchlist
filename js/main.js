@@ -23,7 +23,7 @@ function getMovieData(name) {
     currentItem.Plot = xhr.response.Plot;
     currentItem.Poster = xhr.response.Poster;
     document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
-    document.querySelector('.add-watchlist').addEventListener('click', function () { handleClick(event, currentItem); });
+    document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleClick(event, currentItem); });
   });
   xhr.send();
 }
@@ -78,35 +78,35 @@ function movieInfo(view, currentItem) {
     row.className = 'row align-center flex-column movie-data';
 
     var threeFourColumn = document.createElement('div');
-    threeFourColumn.className = 'column-three-four';
+    threeFourColumn.className = 'column-three-four padding-075';
 
     threeFourColumn.appendChild(headingTitle);
     threeFourColumn.appendChild(paragraphTitle);
     row.appendChild(threeFourColumn);
 
     var threeFourYear = document.createElement('div');
-    threeFourYear.className = 'column-three-four';
+    threeFourYear.className = 'column-three-four padding-075';
 
     threeFourYear.appendChild(headingYear);
     threeFourYear.appendChild(paragraphYear);
     row.appendChild(threeFourYear);
 
     var threeFourGenre = document.createElement('div');
-    threeFourGenre.className = 'column-three-four';
+    threeFourGenre.className = 'column-three-four padding-075';
 
     threeFourGenre.appendChild(headingGenre);
     threeFourGenre.appendChild(paragraphGenre);
     row.appendChild(threeFourGenre);
 
     var threeFourImdb = document.createElement('div');
-    threeFourImdb.className = 'column-three-four';
+    threeFourImdb.className = 'column-three-four padding-075';
 
     threeFourImdb.appendChild(headingImdb);
     threeFourImdb.appendChild(paragraphImdb);
     row.appendChild(threeFourImdb);
 
     var threeFourPlot = document.createElement('div');
-    threeFourPlot.className = 'column-three-four';
+    threeFourPlot.className = 'column-three-four padding-075';
 
     threeFourPlot.appendChild(headingPlot);
     threeFourPlot.appendChild(paragraphPlot);
@@ -179,14 +179,14 @@ function movieInfo(view, currentItem) {
     rowWatch.appendChild(fullColumnImdb);
 
     var fullColumnPlot = document.createElement('div');
-    fullColumnPlot.className = 'column-three-four';
+    fullColumnPlot.className = 'column-full';
 
     fullColumnPlot.appendChild(headingPlot);
     fullColumnPlot.appendChild(paragraphPlot);
     rowWatch.appendChild(fullColumnPlot);
 
     var infoWatch = document.createElement('div');
-    infoWatch.className = 'column-three-four top-margin';
+    infoWatch.className = 'column-three-four top-margin padding-075';
     infoWatch.appendChild(rowWatch);
     var watchlistentry = document.createElement('div');
     watchlistentry.className = 'watchlistentry';

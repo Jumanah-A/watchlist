@@ -3,6 +3,12 @@ input {
   margin: 0;
 }
 
+h1 {
+  font-size: xxx-large;
+  color: #db202c;
+  font-family: 'bebas_neueregular', Helvetica, Arial, sans-serif;
+}
+
 .hidden {
   display: none !important;
 }
@@ -10,12 +16,6 @@ input {
 .top-margin {
   margin-top: 1rem;
 }
-
-/* .container {
-  position: relative;
-  padding: 0 1.5rem;
-  margin: auto;
-} */
 
 .container {
   /* margin: auto; */
@@ -31,15 +31,28 @@ input {
 
 .column-full {
   width: 100%;
+  padding: 0 0.75rem;
 }
 
 .column-half {
   width: 50%;
 }
 
+.test {
+  padding-left: 3rem;
+}
+
 @media screen and (max-width: 768px) {
   body {
     width: 100%;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+
+  .test {
+    padding-left: 0.75rem;
   }
 
   .column-full,
@@ -70,10 +83,6 @@ input {
   }
 
   .watchlist-heading {
-    width: 40%;
-  }
-
-  .mywatchlist {
     width: 60%;
   }
 
