@@ -17,6 +17,10 @@ button {
   background-color: #161a1d;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 button:active {
   transform: scale(0.95);
 }
@@ -163,7 +167,7 @@ h4 {
   color: white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
-  margin: 2rem 2rem;
+  margin: 1rem 1rem;
 }
 
 .red-button:active {
@@ -177,4 +181,20 @@ h4 {
 
 .bottom-padding {
   padding-bottom: 1rem;
+}
+
+.justify-even {
+  justify-content: space-evenly;
+}
+
+.star {
+  color: #db202c;
+}
+
+.stars {
+  padding-left: 1rem;
+}
+
+.rating {
+  padding-top: 1rem;
 }

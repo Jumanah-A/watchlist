@@ -23,6 +23,7 @@ function getMovieData(name) {
     currentItem.Plot = xhr.response.Plot;
     currentItem.Poster = xhr.response.Poster;
     document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
+    document.querySelector('.rate').addEventListener('click', function (event) { handleClick(event, currentItem); });
     document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleClick(event, currentItem); });
   });
   xhr.send();
@@ -117,9 +118,8 @@ function movieInfo(view, currentItem) {
     info.appendChild(row);
 
     var addWatchlistRow = document.createElement('div');
-    addWatchlistRow.className = 'row one-padding justify-center';
+    addWatchlistRow.className = 'row one-padding justify-even';
     var addWatchlistColumn = document.createElement('div');
-    // addWatchlistColumn.className = 'column-half';
     var addWatchlistButton = document.createElement('button');
     addWatchlistButton.className = 'add-watchlist red-button';
     addWatchlistButton.setAttribute('type', 'button');
@@ -129,6 +129,17 @@ function movieInfo(view, currentItem) {
     addWatchlistButton.append(' Add to watchlist');
     addWatchlistColumn.appendChild(addWatchlistButton);
     addWatchlistRow.appendChild(addWatchlistColumn);
+
+    var rateColumn = document.createElement('div');
+    var rateButton = document.createElement('button');
+    rateButton.className = 'rate red-button';
+    rateButton.setAttribute('type', 'button');
+    var thumbsUp = document.createElement('i');
+    thumbsUp.className = 'fas fa-thumbs-up';
+    rateButton.appendChild(thumbsUp);
+    rateButton.append(' Rate');
+    rateColumn.appendChild(rateButton);
+    addWatchlistRow.appendChild(rateColumn);
 
     var block = document.createElement('div');
     block.className = 'entry';
@@ -203,6 +214,7 @@ function movieInfo(view, currentItem) {
 }
 
 function handleClick(event, entry) {
+  // console.log(event.target.className);
   if (event.target.className === 'mywatchlist-img') {
     showWatchlist();
     if (watchData.watchListArray.length === 0) {
@@ -215,7 +227,45 @@ function handleClick(event, entry) {
     switchViews('search-view');
   } else if (event.target.className === 'add-watchlist red-button') {
     addToWatchlist(entry);
+  } else if (event.target.className === 'rate red-button') {
+    // console.log("rate button is pressed");
+    document.querySelector('.movie-data').appendChild(showRating());
   }
+}
+
+function showRating() {
+  var ratingRow = document.createElement('div');
+  ratingRow.className = 'column-three-four padding-075 rating flex';
+  var chooseRating = document.createElement('div');
+  chooseRating.className = 'choose-rating';
+  var ratingHeading = document.createElement('h4');
+  ratingHeading.textContent = 'Choose your rating: ';
+  chooseRating.appendChild(ratingHeading);
+  var stars = document.createElement('div');
+  stars.className = 'stars flex align-center';
+  var firstStarIcon = document.createElement('i');
+  firstStarIcon.className = 'far fa-star fa-2x star';
+  firstStarIcon.setAttribute('id', 'first-star');
+  var secondStarIcon = document.createElement('i');
+  secondStarIcon.className = 'far fa-star fa-2x star';
+  secondStarIcon.setAttribute('id', 'second-star');
+  var thirdStarIcon = document.createElement('i');
+  thirdStarIcon.className = 'far fa-star fa-2x star';
+  thirdStarIcon.setAttribute('id', 'third-star');
+  var fourthStarIcon = document.createElement('i');
+  fourthStarIcon.className = 'far fa-star fa-2x star';
+  fourthStarIcon.setAttribute('id', 'fourth-star');
+  var fifthStarIcon = document.createElement('i');
+  fifthStarIcon.className = 'far fa-star fa-2x star';
+  fifthStarIcon.setAttribute('id', 'fifth-star');
+  stars.appendChild(firstStarIcon);
+  stars.appendChild(secondStarIcon);
+  stars.appendChild(thirdStarIcon);
+  stars.appendChild(fourthStarIcon);
+  stars.appendChild(fifthStarIcon);
+  ratingRow.appendChild(chooseRating);
+  ratingRow.appendChild(stars);
+  return ratingRow;
 }
 
 function showWatchlist() {
