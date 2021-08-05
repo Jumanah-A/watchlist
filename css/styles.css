@@ -1,6 +1,6 @@
-body {
+/* body {
   width: 100%;
-}
+} */
 
 input {
   background-color: #161a1d;
@@ -14,14 +14,15 @@ input {
 
 button {
   border: none;
+  background-color: #161a1d;
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 input:focus {
   outline: none;
-}
-
-button:hover {
-  cursor: pointer;
 }
 
 p,
@@ -31,8 +32,36 @@ h4 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.container {
-  width: 100%;
+@font-face {
+  font-family: 'bebas_neueregular';
+  src:
+    url('../netflixFont/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../netflixFont/bebasneue-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.one-padding {
+  padding: 1rem;
+}
+
+.column-four {
+  width: 25%;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.padding-075 {
+  padding: 0 0.75rem;
+}
+
+.poster {
+  margin: 1rem;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
 }
 
 .background-image {
@@ -63,12 +92,32 @@ h4 {
   top: 1.25rem;
 }
 
+.search-icon-header {
+  color: #db202c;
+  right: 1rem;
+  top: 1.25rem;
+}
+
+.search-button {
+  background-color: #161a1d;
+}
+
 .align-center {
   align-content: center;
+  align-items: center;
 }
 
 .justify-center {
+  display: flex;
   justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
 }
 
 .search-page {
@@ -76,33 +125,27 @@ h4 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin-bottom: 1rem;
-}
-
-.movie-page {
-  margin: 0 1rem 2rem;
 }
 
 .background-color {
   background-color: #161a1d;
 }
 
-.flex-end {
-  justify-content: flex-start;
-  justify-items: flex-start;
+.margin-0 {
+  margin: 0;
+  display: block;
 }
 
 .flex-column {
   flex-direction: column;
+  justify-content: center;
 }
 
-.movie-info {
-  display: flex;
-}
-
-.one-padding {
-  padding: 1rem;
+.no-items {
+  color: #b1a7a6;
+  padding: 3rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .column-three-four {
@@ -111,4 +154,27 @@ h4 {
 
 .height-100 {
   height: 100vh;
+}
+
+.red-button {
+  background-color: #db202c;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  margin: 2rem 2rem;
+}
+
+.red-button:active {
+  transform: scale(0.95);
+  background-color: #660708;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.bottom-padding {
+  padding-bottom: 1rem;
 }

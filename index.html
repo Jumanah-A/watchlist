@@ -17,16 +17,28 @@
 <body class="background-image">
   <header>
     <div class="header hidden">
-      <div class="row flex-end one-padding">
-          <img class="watchlist-heading" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
-            alt="netflix-font">
+      <div class="row one-padding space-between">
+        <div class="column-three-four flex">
+          <img class="watchlist-heading" src="images/watchlist.png" alt="netflix-font">
+          <div class="test flex">
+            <button class="mywatchlist-button">
+              <h1 class="mywatchlist-img">MY WATCHLIST</h1>
+            </button>
+          </div>
+
+        </div>
+        <div class="column-four flex flex-end">
+          <button class="search-button"><i class="search-icon-header fas fa-search fa-3x"></i></button>
+        </div>
+
+
       </div>
     </div>
   </header>
-  <main class="container">
-    <div data-view="search-view" class=" view">
+  <main class="container center">
+    <div data-view="search-view" class="view">
       <div class="search-page height-100">
-        <div class="row">
+        <div class="row justify-center">
           <img class="homepage-title" src="https://fontmeme.com/permalink/210728/605237b9f2895c5870c13e7925084a74.png"
             alt="netflix-font">
         </div>
@@ -34,7 +46,7 @@
           <div class="column-full">
             <form>
               <div class="search-bar align-center justify-center">
-                <input type="text" name ="title" class="title" placeholder="Enter movie or tv show title...">
+                <input type="text" name="title" class="title" placeholder="Enter movie or tv show title...">
                 <button class="search-button" type="submit"><i class="search-icon fas fa-search fa-lg"></i></button>
               </div>
             </form>
@@ -44,6 +56,17 @@
 
     </div>
     <div data-view="movie-view" class="view hidden" id="movie-display">
+
+    </div>
+    <div data-view="mywatchlist-view" class="view hidden">
+      <div class="row no-items justify-center">
+        <h1>
+          You have no movies or tv shows in your watchlist.
+        </h1>
+      </div>
+      <ul class="mywatchlist-list" id="mywatchlist-list">
+      </ul>
+
     </div>
   </main>
   <script src="js/data.js"></script>
