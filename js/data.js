@@ -2,7 +2,8 @@
 
 var watchData = {
   watchListArray: [],
-  ratings: []
+  ratings: [],
+  currentMovie: null
 };
 
 var previousEntryJSON = localStorage.getItem('javascript-local-storage-watchlist');

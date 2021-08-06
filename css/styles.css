@@ -1,7 +1,3 @@
-/* body {
-  width: 100%;
-} */
-
 input {
   background-color: #161a1d;
   border: none;
@@ -15,6 +11,10 @@ input {
 button {
   border: none;
   background-color: #161a1d;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 button:active {
@@ -163,7 +163,7 @@ h4 {
   color: white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
-  margin: 2rem 2rem;
+  margin: 1rem 1rem;
 }
 
 .red-button:active {
@@ -177,4 +177,29 @@ h4 {
 
 .bottom-padding {
   padding-bottom: 1rem;
+}
+
+.justify-even {
+  justify-content: space-evenly;
+}
+
+.stars {
+  color: #b1a7a6;
+  padding-left: 1rem;
+}
+
+.star:hover ~ .star {
+  color: #b1a7a6;
+}
+
+.stars:hover {
+  color: #db202c;
+}
+
+.checked {
+  color: #db202c;
+}
+
+.watchlist-stars {
+  color: #b1a7a6;
 }
