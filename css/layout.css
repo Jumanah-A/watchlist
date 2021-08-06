@@ -42,6 +42,11 @@ h1 {
   padding-left: 3rem;
 }
 
+.rating {
+  padding-top: 1rem;
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   body {
     width: 100%;
@@ -94,5 +99,14 @@ h1 {
 
   .column-four {
     width: 50%;
+  }
+
+  .rating {
+    padding-top: 1rem;
+    display: unset;
+  }
+
+  .choose-rating {
+    padding-bottom: 1rem;
   }
 }

@@ -4,8 +4,6 @@ function handleSubmit(event) {
   event.preventDefault();
   var movieName = document.querySelector('.title').value;
   getMovieData(movieName.split(' ').join('+'));
-
-  // document.getElementById('movie-display').appendChild(movieInfo('movie'));
   document.getElementById('movie-display').removeChild(document.getElementById('movie-display').firstChild);
   switchViews('movie-view');
   document.querySelector('form').reset();
@@ -23,8 +21,9 @@ function getMovieData(name) {
     currentItem.Plot = xhr.response.Plot;
     currentItem.Poster = xhr.response.Poster;
     document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
-    document.querySelector('.rate').addEventListener('click', function (event) { handleClick(event, currentItem); });
-    document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleClick(event, currentItem); });
+    watchData.currentMovie = currentItem;
+    document.querySelector('.rate').addEventListener('click', function (event, currentItem) { handleRateClick(event, watchData.currentMovie); });
+    document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleAddWatchlistClick(event, watchData.currentMovie); });
   });
   xhr.send();
 }
@@ -159,7 +158,7 @@ function movieInfo(view, currentItem) {
     columnFour.appendChild(rowPosterWatchlist);
 
     var rowWatch = document.createElement('div');
-    rowWatch.className = 'row flex-column movie-data one-padding';
+    rowWatch.className = 'row flex-column movie-data-watchlist one-padding';
 
     var fullColumn = document.createElement('div');
     fullColumn.className = 'column-full';
@@ -197,7 +196,7 @@ function movieInfo(view, currentItem) {
     rowWatch.appendChild(fullColumnPlot);
 
     var infoWatch = document.createElement('div');
-    infoWatch.className = 'column-three-four top-margin padding-075';
+    infoWatch.className = 'column-three-four padding-075';
     infoWatch.appendChild(rowWatch);
     var watchlistentry = document.createElement('div');
     watchlistentry.className = 'watchlistentry';
@@ -213,51 +212,143 @@ function movieInfo(view, currentItem) {
 
 }
 
-function handleClick(event, entry) {
-  // console.log(event.target.className);
-  if (event.target.className === 'mywatchlist-img') {
-    showWatchlist();
-    if (watchData.watchListArray.length === 0) {
-      document.querySelector('.no-items').className = 'row no-items justify-center';
-    } else {
-      document.querySelector('.no-items').className = 'row no-items justify-center hidden';
+function handleMywatchlistClick(event) {
+  showWatchlist();
+  if (watchData.watchListArray.length === 0) {
+    document.querySelector('.no-items').className = 'row no-items justify-center';
+  } else {
+    document.querySelector('.no-items').className = 'row no-items justify-center hidden';
+  }
+  switchViews('mywatchlist-view');
+}
+
+function handleSearchClick(event) {
+  switchViews('search-view');
+}
+
+function handleAddWatchlistClick(event, entry) {
+  addToWatchlist(entry);
+}
+
+function handleRateClick(event, entry) {
+  var current = watchData.currentMovie;
+  if (document.querySelector('.rating') !== null) {
+    document.querySelector('.rating').remove();
+  }
+  document.querySelector('.movie-data').appendChild(showRating(current));
+  document.getElementById('first-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('second-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('third-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('fourth-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('fifth-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+}
+
+function handleRatingStars(event, enrty) {
+  var entry = watchData.currentMovie;
+  switch (event.target.id) {
+    case 'first-star':
+      colorStars('first-star');
+      updateRating(event.target.attributes.value.value, entry);
+      break;
+    case 'second-star':
+      colorStars('second-star');
+      updateRating(event.target.attributes.value.value, entry);
+      break;
+    case 'third-star':
+      colorStars('third-star');
+      updateRating(event.target.attributes.value.value, entry);
+      break;
+    case 'fourth-star':
+      colorStars('fourth-star');
+      updateRating(event.target.attributes.value.value, entry);
+      break;
+    case 'fifth-star':
+      colorStars('fifth-star');
+      updateRating(event.target.attributes.value.value, entry);
+  }
+  // console.log(watchData.ratings);
+}
+
+function colorStars(starRating) {
+  resetStars();
+  var $starList = document.querySelectorAll('.star');
+  for (var i = 0; i < $starList.length; i++) {
+    $starList[i].className = 'fas fa-star fa-2x star checked';
+    if (starRating === $starList[i].getAttribute('id')) {
+      break;
     }
-    switchViews('mywatchlist-view');
-  } else if (event.target.className === 'search-icon-header fas fa-search fa-3x') {
-    switchViews('search-view');
-  } else if (event.target.className === 'add-watchlist red-button') {
-    addToWatchlist(entry);
-  } else if (event.target.className === 'rate red-button') {
-    // console.log("rate button is pressed");
-    document.querySelector('.movie-data').appendChild(showRating());
+  }
+  // console.log('yayay!');
+}
+
+function resetStars() {
+  var $starList = document.querySelectorAll('.star');
+  for (var i = 0; i < $starList.length; i++) {
+    $starList[i].className = 'fas fa-star fa-2x star';
   }
 }
 
-function showRating() {
+function updateRating(ratingValue, entry) {
+  // console.log(entry);
+  var currentEntry = {};
+  currentEntry.rating = parseInt(ratingValue);
+  currentEntry.title = entry.Title;
+  var index = inArray(watchData.ratings, currentEntry);
+  if (index === -1) {
+    watchData.ratings.push(currentEntry);
+  } else {
+    watchData.ratings[index].rating = parseInt(ratingValue);
+  }
+}
+
+function inArray(array, object) {
+  for (var i = 0; i < array.length; i++) {
+    if (String(array[i].title) === String(object.title)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// function inArrayWatchlist(array, object) {
+//   for (var i = 0; i < array.length; i++) {
+//     if (String(array[i].title) === String(object.Title)) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
+
+function showRating(enrty) {
   var ratingRow = document.createElement('div');
-  ratingRow.className = 'column-three-four padding-075 rating flex';
+  ratingRow.className = 'column-three-four padding-075 rating';
   var chooseRating = document.createElement('div');
   chooseRating.className = 'choose-rating';
   var ratingHeading = document.createElement('h4');
-  ratingHeading.textContent = 'Choose your rating: ';
+  ratingHeading.textContent = 'Your rating: ';
   chooseRating.appendChild(ratingHeading);
   var stars = document.createElement('div');
   stars.className = 'stars flex align-center';
   var firstStarIcon = document.createElement('i');
-  firstStarIcon.className = 'far fa-star fa-2x star';
+  firstStarIcon.className = 'fas fa-star fa-2x star';
   firstStarIcon.setAttribute('id', 'first-star');
+  firstStarIcon.setAttribute('value', 1);
   var secondStarIcon = document.createElement('i');
-  secondStarIcon.className = 'far fa-star fa-2x star';
+  secondStarIcon.className = 'fas fa-star fa-2x star';
   secondStarIcon.setAttribute('id', 'second-star');
+  secondStarIcon.setAttribute('value', 2);
   var thirdStarIcon = document.createElement('i');
-  thirdStarIcon.className = 'far fa-star fa-2x star';
+  thirdStarIcon.className = 'fas fa-star fa-2x star';
   thirdStarIcon.setAttribute('id', 'third-star');
+  thirdStarIcon.setAttribute('value', 3);
   var fourthStarIcon = document.createElement('i');
-  fourthStarIcon.className = 'far fa-star fa-2x star';
+  fourthStarIcon.className = 'fas fa-star fa-2x star';
   fourthStarIcon.setAttribute('id', 'fourth-star');
+  fourthStarIcon.setAttribute('value', 4);
   var fifthStarIcon = document.createElement('i');
-  fifthStarIcon.className = 'far fa-star fa-2x star';
+  fifthStarIcon.className = 'fas fa-star fa-2x star';
   fifthStarIcon.setAttribute('id', 'fifth-star');
+  fifthStarIcon.setAttribute('value', 5);
   stars.appendChild(firstStarIcon);
   stars.appendChild(secondStarIcon);
   stars.appendChild(thirdStarIcon);
@@ -272,6 +363,11 @@ function showWatchlist() {
   document.getElementById('mywatchlist-list').innerHTML = '';
   for (var i = 0; i < watchData.watchListArray.length; i++) {
     document.getElementById('mywatchlist-list').appendChild(movieInfo('watchlist', watchData.watchListArray[i]));
+    // debugger;
+    // var index = inArrayWatchlist(watchData.ratings, watchData.watchListArray[i]);
+    // if (index !== -1) {
+    //   document.querySelector('.movie-data-watchlist').appendChild(showRating(watchData.watchListArray[i]));
+    // }
   }
 }
 
@@ -310,5 +406,5 @@ function switchViews(view) {
 
 // Listen for the serach icon and the mywatchlist button in the header
 document.querySelector('form').addEventListener('submit', handleSubmit);
-document.querySelector('.mywatchlist-button').addEventListener('click', handleClick);
-document.querySelector('.search-button').addEventListener('click', handleClick);
+document.querySelector('.mywatchlist-button').addEventListener('click', handleMywatchlistClick);
+document.querySelector('.search-button').addEventListener('click', handleSearchClick);
