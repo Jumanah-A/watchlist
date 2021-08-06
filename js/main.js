@@ -211,7 +211,7 @@ function movieInfo(view, currentItem) {
 }
 
 function handleMywatchlistClick(event) {
-  showWatchlist();
+  showWatchlist(watchData.watchListArray);
   if (watchData.watchListArray.length === 0) {
     document.querySelector('.no-items').className = 'row no-items justify-center';
   } else {
@@ -305,6 +305,15 @@ function inArray(array, object) {
   return -1;
 }
 
+function inArrayRating(array, object) {
+  for (var i = 0; i < array.length; i++) {
+    if (String(array[i].Title) === String(object.Title)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 function inArrayWatchlist(array, object) {
   for (var i = 0; i < array.length; i++) {
     if (String(array[i].title) === String(object.Title)) {
@@ -354,15 +363,15 @@ function showRating(enrty) {
   return ratingRow;
 }
 
-function showWatchlist() {
+function showWatchlist(array) {
   document.getElementById('mywatchlist-list').innerHTML = '';
-  for (var i = 0; i < watchData.watchListArray.length; i++) {
-    var index = inArrayWatchlist(watchData.ratings, watchData.watchListArray[i]);
+  for (var i = 0; i < array.length; i++) {
+    var index = inArrayWatchlist(watchData.ratings, array[i]);
     if (index !== -1) {
-      var x = addRatingToWatchlist(watchData.watchListArray[i], index);
+      var x = addRatingToWatchlist(array[i], index);
       document.getElementById('mywatchlist-list').appendChild(x);
     } else {
-      document.getElementById('mywatchlist-list').appendChild(movieInfo('watchlist', watchData.watchListArray[i]));
+      document.getElementById('mywatchlist-list').appendChild(movieInfo('watchlist', array[i]));
     }
   }
 }
@@ -455,8 +464,32 @@ function colorWatchlistStars(stars, entry) {
     }
   }
 }
+function handleSortClick(event) {
+  showWatchlist(sortWatchlist());
+}
+
+function sortWatchlist() {
+  var sortedRating = JSON.parse(JSON.stringify(watchData.ratings));
+  var newRated = [];
+  sortedRating.sort((a, b) => (a.rating < b.rating) ? 1 : -1);
+  for (var i = 0; i < sortedRating.length; i++) {
+    for (var j = 0; j < watchData.watchListArray.length; j++) {
+      if (sortedRating[i].title === watchData.watchListArray[j].Title) {
+        newRated.push(watchData.watchListArray[j]);
+        break;
+      }
+    }
+  }
+  for (var k = 0; k < watchData.watchListArray.length; k++) {
+    if (inArrayRating(newRated, watchData.watchListArray[k]) === -1) {
+      newRated.push(watchData.watchListArray[k]);
+    }
+  }
+  return newRated;
+}
 
 // Listen for the serach icon and the mywatchlist button in the header
 document.querySelector('form').addEventListener('submit', handleSubmit);
 document.querySelector('.mywatchlist-button').addEventListener('click', handleMywatchlistClick);
 document.querySelector('.search-button').addEventListener('click', handleSearchClick);
+document.querySelector('.sort-button').addEventListener('click', handleSortClick);

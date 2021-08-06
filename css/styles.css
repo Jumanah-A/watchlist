@@ -17,10 +17,6 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.95);
-}
-
 input:focus {
   outline: none;
 }
@@ -164,6 +160,7 @@ h4 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   margin: 1rem 1rem;
+  font-size: unset;
 }
 
 .red-button:active {
@@ -202,4 +199,9 @@ h4 {
 
 .watchlist-stars {
   color: #b1a7a6;
+}
+
+button .search-button:active,
+.mywatchlist-button :active {
+  transform: scale(0.95);
 }
