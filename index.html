@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +12,18 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body class="background-image">
   <header>
     <div class="header hidden">
       <div class="row one-padding space-between">
-        <div class="column-three-four flex">
-          <img class="watchlist-heading" src="images/watchlist.png" alt="netflix-font">
+        <div class="column-three-four flex"><img class="watchlist-heading" src="images/watchlist.png" alt="netflix-font">
           <div class="test flex">
-            <button class="mywatchlist-button">
-              <h1 class="mywatchlist-img">MY WATCHLIST</h1>
-            </button>
+            <button class="mywatchlist-button"><h1 class="mywatchlist-img">MY WATCHLIST</h1></button>
           </div>
-
         </div>
         <div class="column-four flex flex-end">
           <button class="search-button"><i class="search-icon-header fas fa-search fa-3x"></i></button>
         </div>
-
-
       </div>
     </div>
   </header>
@@ -64,6 +56,11 @@
           You have no movies or tv shows in your watchlist.
         </h1>
       </div>
+      <div class="sort flex flex-end">
+        <button class="sort-button red-button">
+          <i class="fas fa-sort"> Sort By Rating</i>
+        </button>
+      </div>
       <ul class="mywatchlist-list" id="mywatchlist-list">
       </ul>
 
@@ -72,5 +69,4 @@
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>

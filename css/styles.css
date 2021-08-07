@@ -17,10 +17,6 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.95);
-}
-
 input:focus {
   outline: none;
 }
@@ -202,4 +198,9 @@ h4 {
 
 .watchlist-stars {
   color: #b1a7a6;
+}
+
+button .search-button:active,
+.mywatchlist-button :active {
+  transform: scale(0.95);
 }
