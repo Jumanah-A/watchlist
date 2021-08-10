@@ -458,10 +458,10 @@ function watchlistStars(entry) {
 function colorWatchlistStars(stars, entry) {
   var index = inArrayWatchlist(watchData.ratings, entry);
   for (var i = 0; i < stars.length; i++) {
-    stars[i].className = 'fas fa-star fa-2x watchlist-star checked';
     if (watchData.ratings[index].rating === i) {
       break;
     }
+    stars[i].className = 'fas fa-star fa-2x watchlist-star checked';
   }
 }
 function handleSortClick(event) {
