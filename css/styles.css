@@ -31,8 +31,8 @@ h4 {
 @font-face {
   font-family: 'bebas_neueregular';
   src:
-    url('../netflixFont/bebasneue-regular-webfont.woff2') format('woff2'),
-    url('../netflixFont/bebasneue-regular-webfont.woff') format('woff');
+    url('../netflix-font/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../netflix-font/bebasneue-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -126,11 +126,6 @@ h4 {
 
 .background-color {
   background-color: #161a1d;
-}
-
-.margin-0 {
-  margin: 0;
-  display: block;
 }
 
 .flex-column {

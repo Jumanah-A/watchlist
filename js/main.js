@@ -29,40 +29,34 @@ function getMovieData(name) {
 }
 
 function movieInfo(view, currentItem) {
-  // img element for the poster
   var posterImg = document.createElement('img');
   posterImg.className = 'poster';
   posterImg.setAttribute('src', currentItem.Poster);
 
-  // title
   var headingTitle = document.createElement('h4');
   headingTitle.textContent = 'Title:';
   var paragraphTitle = document.createElement('p');
   paragraphTitle.className = 'movie-title';
   paragraphTitle.textContent = currentItem.Title;
 
-  // year
   var headingYear = document.createElement('h4');
   headingYear.textContent = 'Year:';
   var paragraphYear = document.createElement('p');
   paragraphYear.className = 'year';
   paragraphYear.textContent = currentItem.Year.split('–').join(' – ');
 
-  // genre
   var headingGenre = document.createElement('h4');
   headingGenre.textContent = 'Genre:';
   var paragraphGenre = document.createElement('p');
   paragraphGenre.className = 'genre';
   paragraphGenre.textContent = currentItem.Genre;
 
-  // imdbRating
   var headingImdb = document.createElement('h4');
   headingImdb.textContent = 'IMDb Rating:';
   var paragraphImdb = document.createElement('p');
   paragraphImdb.className = 'imdb-rating';
   paragraphImdb.textContent = currentItem.imdbRating;
 
-  // plot
   var headingPlot = document.createElement('h4');
   headingPlot.textContent = 'Plot:';
   var paragraphPlot = document.createElement('p');
@@ -487,8 +481,6 @@ function sortWatchlist() {
   }
   return newRated;
 }
-
-// Listen for the serach icon and the mywatchlist button in the header
 document.querySelector('form').addEventListener('submit', handleSubmit);
 document.querySelector('.mywatchlist-button').addEventListener('click', handleMywatchlistClick);
 document.querySelector('.search-button').addEventListener('click', handleSearchClick);
