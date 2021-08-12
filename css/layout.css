@@ -9,6 +9,36 @@ h1 {
   font-family: 'bebas_neueregular', Helvetica, Arial, sans-serif;
 }
 
+h2 {
+  font-size: xxx-large;
+  color: #db202c;
+  font-family: 'bebas_neueregular', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.red-button {
+  background-color: #db202c;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.dialogue {
+  background-color: #24292d;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 0.25rem;
+}
+
+.back {
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  font-size: larger;
+}
+
 .hidden {
   display: none !important;
 }
@@ -57,7 +87,15 @@ h1 {
   }
 
   h1 {
-    font-size: 21px;
+    font-size: 4.5vw;
+  }
+
+  h2 {
+    font-size: 4.5vw;
+  }
+
+  .red-button {
+    font-size: 2.75vw;
   }
 
   .test {
@@ -67,10 +105,6 @@ h1 {
   .column-full,
   .column-half {
     width: 100%;
-  }
-
-  .red-button {
-    font-size: 12px;
   }
 
   .title {

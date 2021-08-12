@@ -14,18 +14,47 @@ function getMovieData(name) {
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    currentItem.Title = xhr.response.Title;
-    currentItem.Year = xhr.response.Year;
-    currentItem.Genre = xhr.response.Genre;
-    currentItem.imdbRating = xhr.response.imdbRating;
-    currentItem.Plot = xhr.response.Plot;
-    currentItem.Poster = xhr.response.Poster;
-    document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
-    watchData.currentMovie = currentItem;
-    document.querySelector('.rate').addEventListener('click', function (event, currentItem) { handleRateClick(event, watchData.currentMovie); });
-    document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleAddWatchlistClick(event, watchData.currentMovie); });
+    if (xhr.response.Response === 'False') {
+      document.getElementById('movie-display').appendChild(titleNotFound(event));
+      document.querySelector('.back').addEventListener('click', function (event) { handleBackClick(event); });
+    } else {
+      currentItem.Title = xhr.response.Title;
+      currentItem.Year = xhr.response.Year;
+      currentItem.Genre = xhr.response.Genre;
+      currentItem.imdbRating = xhr.response.imdbRating;
+      currentItem.Plot = xhr.response.Plot;
+      currentItem.Poster = xhr.response.Poster;
+      document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
+      watchData.currentMovie = currentItem;
+      document.querySelector('.rate').addEventListener('click', function (event, currentItem) { handleRateClick(event, watchData.currentMovie); });
+      document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleAddWatchlistClick(event, watchData.currentMovie); });
+    }
   });
   xhr.send();
+}
+function titleNotFound(event) {
+  var modalDiv = document.createElement('div');
+  modalDiv.className = 'modal overlay-shadow';
+
+  var dialogueDiv = document.createElement('div');
+  dialogueDiv.className = 'dialogue';
+
+  var h2El = document.createElement('h2');
+  h2El.textContent = "The title you typed isn't available right now. Please enter a different title.";
+
+  var backButton = document.createElement('button');
+  backButton.className = 'red-button back';
+  backButton.textContent = 'Back to Search Page';
+
+  dialogueDiv.appendChild(h2El);
+  dialogueDiv.appendChild(backButton);
+
+  modalDiv.appendChild(dialogueDiv);
+
+  return modalDiv;
+}
+function handleBackClick(event) {
+  switchViews('search-view');
 }
 
 function movieInfo(view, currentItem) {
