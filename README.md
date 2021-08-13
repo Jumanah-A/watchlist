@@ -1,7 +1,5 @@
 # Watchlist
 
-A dynamic HTML, CSS, and JavaScript solo project.
-
 A front-end web application for movie-enthusiasts who wish to keep track of the movies and tv shows they watched and rated.
 
 ## Technologies Used
