@@ -1,12 +1,12 @@
 /* exported watchData */
 
-var watchData = {
+let watchData = {
   watchListArray: [],
   ratings: [],
   currentMovie: null
 };
 
-var previousEntryJSON = localStorage.getItem('javascript-local-storage-watchlist');
+const previousEntryJSON = localStorage.getItem('javascript-local-storage-watchlist');
 if (previousEntryJSON !== null) {
   watchData = JSON.parse(previousEntryJSON);
 }

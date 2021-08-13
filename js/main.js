@@ -2,15 +2,15 @@
 /* global watchData */
 function handleSubmit(event) {
   event.preventDefault();
-  var movieName = document.querySelector('.title').value;
+  const movieName = document.querySelector('.title').value;
   getMovieData(movieName.split(' ').join('+'));
   document.getElementById('movie-display').removeChild(document.getElementById('movie-display').firstChild);
   switchViews('movie-view');
   document.querySelector('form').reset();
 }
 function getMovieData(name) {
-  var currentItem = {};
-  var xhr = new XMLHttpRequest();
+  const currentItem = {};
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -33,16 +33,16 @@ function getMovieData(name) {
   xhr.send();
 }
 function titleNotFound(event) {
-  var modalDiv = document.createElement('div');
+  const modalDiv = document.createElement('div');
   modalDiv.className = 'modal overlay-shadow';
 
-  var dialogueDiv = document.createElement('div');
+  const dialogueDiv = document.createElement('div');
   dialogueDiv.className = 'dialogue';
 
-  var h2El = document.createElement('h2');
+  const h2El = document.createElement('h2');
   h2El.textContent = "The title you typed isn't available right now. Please enter a different title.";
 
-  var backButton = document.createElement('button');
+  const backButton = document.createElement('button');
   backButton.className = 'red-button back';
   backButton.textContent = 'Back to Search Page';
 
@@ -58,112 +58,112 @@ function handleBackClick(event) {
 }
 
 function movieInfo(view, currentItem) {
-  var posterImg = document.createElement('img');
+  const posterImg = document.createElement('img');
   posterImg.className = 'poster';
   posterImg.setAttribute('src', currentItem.Poster);
 
-  var headingTitle = document.createElement('h4');
+  const headingTitle = document.createElement('h4');
   headingTitle.textContent = 'Title:';
-  var paragraphTitle = document.createElement('p');
+  const paragraphTitle = document.createElement('p');
   paragraphTitle.className = 'movie-title';
   paragraphTitle.textContent = currentItem.Title;
 
-  var headingYear = document.createElement('h4');
+  const headingYear = document.createElement('h4');
   headingYear.textContent = 'Year:';
-  var paragraphYear = document.createElement('p');
+  const paragraphYear = document.createElement('p');
   paragraphYear.className = 'year';
   paragraphYear.textContent = currentItem.Year.split('–').join(' – ');
 
-  var headingGenre = document.createElement('h4');
+  const headingGenre = document.createElement('h4');
   headingGenre.textContent = 'Genre:';
-  var paragraphGenre = document.createElement('p');
+  const paragraphGenre = document.createElement('p');
   paragraphGenre.className = 'genre';
   paragraphGenre.textContent = currentItem.Genre;
 
-  var headingImdb = document.createElement('h4');
+  const headingImdb = document.createElement('h4');
   headingImdb.textContent = 'IMDb Rating:';
-  var paragraphImdb = document.createElement('p');
+  const paragraphImdb = document.createElement('p');
   paragraphImdb.className = 'imdb-rating';
   paragraphImdb.textContent = currentItem.imdbRating;
 
-  var headingPlot = document.createElement('h4');
+  const headingPlot = document.createElement('h4');
   headingPlot.textContent = 'Plot:';
-  var paragraphPlot = document.createElement('p');
+  const paragraphPlot = document.createElement('p');
   paragraphPlot.className = 'plot';
   paragraphPlot.textContent = currentItem.Plot;
 
   if (view === 'movie') {
-    var rowPoster = document.createElement('div');
+    const rowPoster = document.createElement('div');
     rowPoster.className = 'row justify-center align-center movie-page';
     rowPoster.appendChild(posterImg);
 
-    var row = document.createElement('div');
+    const row = document.createElement('div');
     row.className = 'row align-center flex-column movie-data';
 
-    var threeFourColumn = document.createElement('div');
+    const threeFourColumn = document.createElement('div');
     threeFourColumn.className = 'column-three-four padding-075';
 
     threeFourColumn.appendChild(headingTitle);
     threeFourColumn.appendChild(paragraphTitle);
     row.appendChild(threeFourColumn);
 
-    var threeFourYear = document.createElement('div');
+    const threeFourYear = document.createElement('div');
     threeFourYear.className = 'column-three-four padding-075';
 
     threeFourYear.appendChild(headingYear);
     threeFourYear.appendChild(paragraphYear);
     row.appendChild(threeFourYear);
 
-    var threeFourGenre = document.createElement('div');
+    const threeFourGenre = document.createElement('div');
     threeFourGenre.className = 'column-three-four padding-075';
 
     threeFourGenre.appendChild(headingGenre);
     threeFourGenre.appendChild(paragraphGenre);
     row.appendChild(threeFourGenre);
 
-    var threeFourImdb = document.createElement('div');
+    const threeFourImdb = document.createElement('div');
     threeFourImdb.className = 'column-three-four padding-075';
 
     threeFourImdb.appendChild(headingImdb);
     threeFourImdb.appendChild(paragraphImdb);
     row.appendChild(threeFourImdb);
 
-    var threeFourPlot = document.createElement('div');
+    const threeFourPlot = document.createElement('div');
     threeFourPlot.className = 'column-three-four padding-075';
 
     threeFourPlot.appendChild(headingPlot);
     threeFourPlot.appendChild(paragraphPlot);
     row.appendChild(threeFourPlot);
 
-    var info = document.createElement('div');
+    const info = document.createElement('div');
     info.className = 'movie-info one-padding justify-center';
     info.appendChild(row);
 
-    var addWatchlistRow = document.createElement('div');
+    const addWatchlistRow = document.createElement('div');
     addWatchlistRow.className = 'row one-padding justify-even';
-    var addWatchlistColumn = document.createElement('div');
-    var addWatchlistButton = document.createElement('button');
+    const addWatchlistColumn = document.createElement('div');
+    const addWatchlistButton = document.createElement('button');
     addWatchlistButton.className = 'add-watchlist red-button';
     addWatchlistButton.setAttribute('type', 'button');
-    var plusIcon = document.createElement('i');
+    const plusIcon = document.createElement('i');
     plusIcon.className = 'fas fa-plus';
     addWatchlistButton.appendChild(plusIcon);
     addWatchlistButton.append(' Add to watchlist');
     addWatchlistColumn.appendChild(addWatchlistButton);
     addWatchlistRow.appendChild(addWatchlistColumn);
 
-    var rateColumn = document.createElement('div');
-    var rateButton = document.createElement('button');
+    const rateColumn = document.createElement('div');
+    const rateButton = document.createElement('button');
     rateButton.className = 'rate red-button';
     rateButton.setAttribute('type', 'button');
-    var thumbsUp = document.createElement('i');
+    const thumbsUp = document.createElement('i');
     thumbsUp.className = 'fas fa-thumbs-up';
     rateButton.appendChild(thumbsUp);
     rateButton.append(' Rate');
     rateColumn.appendChild(rateButton);
     addWatchlistRow.appendChild(rateColumn);
 
-    var block = document.createElement('div');
+    const block = document.createElement('div');
     block.className = 'entry';
     block.appendChild(rowPoster);
     block.appendChild(info);
@@ -171,59 +171,59 @@ function movieInfo(view, currentItem) {
     return block;
 
   } else if (view === 'watchlist') {
-    var rowPosterWatchlist = document.createElement('div');
+    const rowPosterWatchlist = document.createElement('div');
     rowPosterWatchlist.className = 'justify-center align-center';
     rowPosterWatchlist.appendChild(posterImg);
 
-    var columnFour = document.createElement('div');
+    const columnFour = document.createElement('div');
     columnFour.className = 'column-four';
     columnFour.appendChild(rowPosterWatchlist);
 
-    var rowWatch = document.createElement('div');
+    const rowWatch = document.createElement('div');
     rowWatch.className = 'row flex-column movie-data-watchlist one-padding';
 
-    var fullColumn = document.createElement('div');
+    const fullColumn = document.createElement('div');
     fullColumn.className = 'column-full';
 
     fullColumn.appendChild(headingTitle);
     fullColumn.appendChild(paragraphTitle);
     rowWatch.appendChild(fullColumn);
 
-    var fullColumnYear = document.createElement('div');
+    const fullColumnYear = document.createElement('div');
     fullColumnYear.className = 'column-full';
 
     fullColumnYear.appendChild(headingYear);
     fullColumnYear.appendChild(paragraphYear);
     rowWatch.appendChild(fullColumnYear);
 
-    var fullColumnGenre = document.createElement('div');
+    const fullColumnGenre = document.createElement('div');
     fullColumnGenre.className = 'column-full';
 
     fullColumnGenre.appendChild(headingGenre);
     fullColumnGenre.appendChild(paragraphGenre);
     rowWatch.appendChild(fullColumnGenre);
 
-    var fullColumnImdb = document.createElement('div');
+    const fullColumnImdb = document.createElement('div');
     fullColumnImdb.className = 'column-full';
 
     fullColumnImdb.appendChild(headingImdb);
     fullColumnImdb.appendChild(paragraphImdb);
     rowWatch.appendChild(fullColumnImdb);
 
-    var fullColumnPlot = document.createElement('div');
+    const fullColumnPlot = document.createElement('div');
     fullColumnPlot.className = 'column-full';
 
     fullColumnPlot.appendChild(headingPlot);
     fullColumnPlot.appendChild(paragraphPlot);
     rowWatch.appendChild(fullColumnPlot);
 
-    var infoWatch = document.createElement('div');
+    const infoWatch = document.createElement('div');
     infoWatch.className = 'column-three-four padding-075';
     infoWatch.appendChild(rowWatch);
-    var watchlistentry = document.createElement('div');
+    const watchlistentry = document.createElement('div');
     watchlistentry.className = 'watchlistentry';
 
-    var rowBottom = document.createElement('div');
+    const rowBottom = document.createElement('div');
     rowBottom.className = 'row bottom-padding';
     rowBottom.appendChild(columnFour);
     rowBottom.appendChild(infoWatch);
@@ -252,7 +252,7 @@ function handleAddWatchlistClick(event, entry) {
 }
 
 function handleRateClick(event, entry) {
-  var current = watchData.currentMovie;
+  const current = watchData.currentMovie;
   if (document.querySelector('.rating') !== null) {
     document.querySelector('.rating').remove();
   }
@@ -265,7 +265,7 @@ function handleRateClick(event, entry) {
 }
 
 function handleRatingStars(event, enrty) {
-  var entry = watchData.currentMovie;
+  const entry = watchData.currentMovie;
   switch (event.target.id) {
     case 'first-star':
       colorStars('first-star');
@@ -291,7 +291,7 @@ function handleRatingStars(event, enrty) {
 
 function colorStars(starRating) {
   resetStars();
-  var $starList = document.querySelectorAll('.star');
+  const $starList = document.querySelectorAll('.star');
   for (var i = 0; i < $starList.length; i++) {
     $starList[i].className = 'fas fa-star fa-2x star checked';
     if (starRating === $starList[i].getAttribute('id')) {
@@ -301,17 +301,17 @@ function colorStars(starRating) {
 }
 
 function resetStars() {
-  var $starList = document.querySelectorAll('.star');
+  const $starList = document.querySelectorAll('.star');
   for (var i = 0; i < $starList.length; i++) {
     $starList[i].className = 'fas fa-star fa-2x star';
   }
 }
 
 function updateRating(ratingValue, entry) {
-  var currentEntry = {};
+  const currentEntry = {};
   currentEntry.rating = parseInt(ratingValue);
   currentEntry.title = entry.Title;
-  var index = inArray(watchData.ratings, currentEntry);
+  const index = inArray(watchData.ratings, currentEntry);
   if (index === -1) {
     watchData.ratings.push(currentEntry);
   } else {
@@ -347,32 +347,32 @@ function inArrayWatchlist(array, object) {
 }
 
 function showRating(enrty) {
-  var ratingRow = document.createElement('div');
+  const ratingRow = document.createElement('div');
   ratingRow.className = 'column-three-four padding-075 rating';
-  var chooseRating = document.createElement('div');
+  const chooseRating = document.createElement('div');
   chooseRating.className = 'choose-rating';
-  var ratingHeading = document.createElement('h4');
+  const ratingHeading = document.createElement('h4');
   ratingHeading.textContent = 'Your rating: ';
   chooseRating.appendChild(ratingHeading);
-  var stars = document.createElement('div');
+  const stars = document.createElement('div');
   stars.className = 'stars flex align-center';
-  var firstStarIcon = document.createElement('i');
+  const firstStarIcon = document.createElement('i');
   firstStarIcon.className = 'fas fa-star fa-2x star';
   firstStarIcon.setAttribute('id', 'first-star');
   firstStarIcon.setAttribute('value', 1);
-  var secondStarIcon = document.createElement('i');
+  const secondStarIcon = document.createElement('i');
   secondStarIcon.className = 'fas fa-star fa-2x star';
   secondStarIcon.setAttribute('id', 'second-star');
   secondStarIcon.setAttribute('value', 2);
-  var thirdStarIcon = document.createElement('i');
+  const thirdStarIcon = document.createElement('i');
   thirdStarIcon.className = 'fas fa-star fa-2x star';
   thirdStarIcon.setAttribute('id', 'third-star');
   thirdStarIcon.setAttribute('value', 3);
-  var fourthStarIcon = document.createElement('i');
+  const fourthStarIcon = document.createElement('i');
   fourthStarIcon.className = 'fas fa-star fa-2x star';
   fourthStarIcon.setAttribute('id', 'fourth-star');
   fourthStarIcon.setAttribute('value', 4);
-  var fifthStarIcon = document.createElement('i');
+  const fifthStarIcon = document.createElement('i');
   fifthStarIcon.className = 'fas fa-star fa-2x star';
   fifthStarIcon.setAttribute('id', 'fifth-star');
   fifthStarIcon.setAttribute('value', 5);
@@ -389,9 +389,9 @@ function showRating(enrty) {
 function showWatchlist(array) {
   document.getElementById('mywatchlist-list').innerHTML = '';
   for (var i = 0; i < array.length; i++) {
-    var index = inArrayWatchlist(watchData.ratings, array[i]);
+    const index = inArrayWatchlist(watchData.ratings, array[i]);
     if (index !== -1) {
-      var x = addRatingToWatchlist(array[i], index);
+      const x = addRatingToWatchlist(array[i], index);
       document.getElementById('mywatchlist-list').appendChild(x);
     } else {
       document.getElementById('mywatchlist-list').appendChild(movieInfo('watchlist', array[i]));
@@ -403,7 +403,7 @@ function addToWatchlist(entry) {
   if (watchData.watchListArray.length === 0) {
     watchData.watchListArray.push(entry);
   } else {
-    var len = watchData.watchListArray.length;
+    const len = watchData.watchListArray.length;
     for (var i = 0; i < len; i++) {
       if (String(watchData.watchListArray[i].Title) === String(entry.Title)) {
 
@@ -415,7 +415,7 @@ function addToWatchlist(entry) {
 }
 
 function switchViews(view) {
-  var $viewList = document.querySelectorAll('.view');
+  const $viewList = document.querySelectorAll('.view');
   for (var i = 0; i < $viewList.length; i++) {
     if (view !== $viewList[i].getAttribute('data-view')) {
       $viewList[i].className = 'view hidden';
@@ -433,38 +433,38 @@ function switchViews(view) {
 }
 
 function addRatingToWatchlist(entry, index) {
-  var temp = movieInfo('watchlist', entry);
-  var tempStars = watchlistStars(entry, index);
+  const temp = movieInfo('watchlist', entry);
+  const tempStars = watchlistStars(entry, index);
   temp.firstElementChild.lastElementChild.firstElementChild.appendChild(tempStars);
   return temp;
 }
 function watchlistStars(entry) {
-  var ratingRow = document.createElement('div');
+  const ratingRow = document.createElement('div');
   ratingRow.className = 'column-three-four padding-075 watchlist-rating';
-  var chooseRating = document.createElement('div');
+  const chooseRating = document.createElement('div');
   chooseRating.className = 'choose-rating';
-  var ratingHeading = document.createElement('h4');
+  const ratingHeading = document.createElement('h4');
   ratingHeading.textContent = 'Your rating: ';
   chooseRating.appendChild(ratingHeading);
-  var stars = document.createElement('div');
+  const stars = document.createElement('div');
   stars.className = 'watchlist-stars flex align-center';
-  var firstStarIcon = document.createElement('i');
+  const firstStarIcon = document.createElement('i');
   firstStarIcon.className = 'fas fa-star fa-2x watchlist-star';
   firstStarIcon.setAttribute('id', 'first-star');
   firstStarIcon.setAttribute('value', 1);
-  var secondStarIcon = document.createElement('i');
+  const secondStarIcon = document.createElement('i');
   secondStarIcon.className = 'fas fa-star fa-2x watchlist-star';
   secondStarIcon.setAttribute('id', 'second-star');
   secondStarIcon.setAttribute('value', 2);
-  var thirdStarIcon = document.createElement('i');
+  const thirdStarIcon = document.createElement('i');
   thirdStarIcon.className = 'fas fa-star fa-2x watchlist-star';
   thirdStarIcon.setAttribute('id', 'third-star');
   thirdStarIcon.setAttribute('value', 3);
-  var fourthStarIcon = document.createElement('i');
+  const fourthStarIcon = document.createElement('i');
   fourthStarIcon.className = 'fas fa-star fa-2x watchlist-star';
   fourthStarIcon.setAttribute('id', 'fourth-star');
   fourthStarIcon.setAttribute('value', 4);
-  var fifthStarIcon = document.createElement('i');
+  const fifthStarIcon = document.createElement('i');
   fifthStarIcon.className = 'fas fa-star fa-2x watchlist-star';
   fifthStarIcon.setAttribute('id', 'fifth-star');
   fifthStarIcon.setAttribute('value', 5);
@@ -479,7 +479,7 @@ function watchlistStars(entry) {
   return ratingRow;
 }
 function colorWatchlistStars(stars, entry) {
-  var index = inArrayWatchlist(watchData.ratings, entry);
+  const index = inArrayWatchlist(watchData.ratings, entry);
   for (var i = 0; i < stars.length; i++) {
     if (watchData.ratings[index].rating === i) {
       break;
@@ -493,7 +493,7 @@ function handleSortClick(event) {
 
 function sortWatchlist() {
   var sortedRating = JSON.parse(JSON.stringify(watchData.ratings));
-  var newRated = [];
+  const newRated = [];
   sortedRating.sort((a, b) => (a.rating < b.rating) ? 1 : -1);
   for (var i = 0; i < sortedRating.length; i++) {
     for (var j = 0; j < watchData.watchListArray.length; j++) {
