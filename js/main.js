@@ -13,10 +13,10 @@ function getMovieData(name) {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=d0b53caa&t=' + name);
   xhr.responseType = 'json';
-  xhr.addEventListener('load', function () {
+  xhr.addEventListener('load', () => {
     if (xhr.response.Response === 'False') {
       document.getElementById('movie-display').appendChild(titleNotFound(event));
-      document.querySelector('.back').addEventListener('click', function (event) { handleBackClick(event); });
+      document.querySelector('.back').addEventListener('click', event => { handleBackClick(event); });
     } else {
       currentItem.Title = xhr.response.Title;
       currentItem.Year = xhr.response.Year;
@@ -26,8 +26,8 @@ function getMovieData(name) {
       currentItem.Poster = xhr.response.Poster;
       document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
       watchData.currentMovie = currentItem;
-      document.querySelector('.rate').addEventListener('click', function (event, currentItem) { handleRateClick(event, watchData.currentMovie); });
-      document.querySelector('.add-watchlist').addEventListener('click', function (event) { handleAddWatchlistClick(event, watchData.currentMovie); });
+      document.querySelector('.rate').addEventListener('click', (event, currentItem) => { handleRateClick(event, watchData.currentMovie); });
+      document.querySelector('.add-watchlist').addEventListener('click', event => { handleAddWatchlistClick(event, watchData.currentMovie); });
     }
   });
   xhr.send();
@@ -257,11 +257,11 @@ function handleRateClick(event, entry) {
     document.querySelector('.rating').remove();
   }
   document.querySelector('.movie-data').appendChild(showRating(current));
-  document.getElementById('first-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
-  document.getElementById('second-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
-  document.getElementById('third-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
-  document.getElementById('fourth-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
-  document.getElementById('fifth-star').addEventListener('click', function (event, current) { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('first-star').addEventListener('click', (event, current) => { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('second-star').addEventListener('click', (event, current) => { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('third-star').addEventListener('click', (event, current) => { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('fourth-star').addEventListener('click', (event, current) => { handleRatingStars(event, watchData.currentMovie); });
+  document.getElementById('fifth-star').addEventListener('click', (event, current) => { handleRatingStars(event, watchData.currentMovie); });
 }
 
 function handleRatingStars(event, enrty) {
