@@ -23,7 +23,7 @@ function getMovieData(name) {
       currentItem.Genre = xhr.response.Genre;
       currentItem.imdbRating = xhr.response.imdbRating;
       currentItem.Plot = xhr.response.Plot;
-      currentItem.Poster = xhr.response.Poster;
+      currentItem.Poster = xhr.response.Poster === 'N/A' ? 'images/Picture-Not-Available.jpeg' : xhr.response.Poster;
       document.getElementById('movie-display').appendChild(movieInfo('movie', currentItem));
       watchData.currentMovie = currentItem;
       document.querySelector('.rate').addEventListener('click', function (event, currentItem) { handleRateClick(event, watchData.currentMovie); });
@@ -402,15 +402,17 @@ function showWatchlist(array) {
 function addToWatchlist(entry) {
   if (watchData.watchListArray.length === 0) {
     watchData.watchListArray.push(entry);
+    handleMywatchlistClick();
   } else {
     var len = watchData.watchListArray.length;
     for (var i = 0; i < len; i++) {
       if (String(watchData.watchListArray[i].Title) === String(entry.Title)) {
-
+        handleMywatchlistClick();
         return;
       }
     }
     watchData.watchListArray.push(entry);
+    handleMywatchlistClick();
   }
 }
 
