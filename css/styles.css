@@ -61,7 +61,7 @@ h4 {
 }
 
 .background-image {
-  background-image: url("../images/homepage.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/homepage.jpg");
   background-size: cover;
   background-position: center center;
   position: relative;
