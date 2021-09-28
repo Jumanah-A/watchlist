@@ -1,11 +1,11 @@
 input {
-  background-color: #161a1d;
+  background-color: #ffff;
   border: none;
   border-radius: 2rem;
   font-size: 20px;
   width: 500px;
   padding: 1rem;
-  color: #b1a7a6;
+  color: 000000;
 }
 
 button {
@@ -61,7 +61,7 @@ h4 {
 }
 
 .background-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/homepage.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/homepage.jpg");
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -72,7 +72,7 @@ h4 {
 }
 
 .homepage-title {
-  filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(0 10px 10px black);
   padding: 1rem;
 }
 
