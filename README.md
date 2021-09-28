@@ -15,7 +15,7 @@ Try the application live at https://jumanah-a.github.io/watchlist/
 
 ## Features
 
-- Users can search movies and tc shows by their title.
+- Users can search movies and tv shows by their title.
 - User can view the movie or tv show's information.
 - Users can add a movie or tv show to their personal watchlist. 
 - Users can rate the movie or tv show.
