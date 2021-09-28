@@ -22,7 +22,8 @@ Try the application live at https://jumanah-a.github.io/watchlist/
 - User can sort the movie or tv show based on their ratings.
 
 ## Preview
-![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/52221756/129285048-b7690265-1bf5-46d1-bf6a-11024e993f04.gif)
+![preview](https://user-images.githubusercontent.com/52221756/135176706-3bc20681-80f2-4917-ab95-fc2e8a4c21bd.gif)
+
 
 
 ## Future Development
